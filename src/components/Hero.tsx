@@ -1,5 +1,6 @@
 import { ArrowRight, Globe, Shield, Anchor } from 'lucide-react';
 import { motion } from 'motion/react';
+import type { Variants } from 'motion/react';
 import { HERO_IMAGE } from '../data';
 
 export default function Hero() {
@@ -19,7 +20,7 @@ export default function Hero() {
     }
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -30,12 +31,12 @@ export default function Hero() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: 'spring', stiffness: 100, damping: 15 },
+      transition: { type: 'spring' as const, stiffness: 100, damping: 15 },
     },
   };
 

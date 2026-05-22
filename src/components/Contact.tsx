@@ -336,8 +336,8 @@ export default function Contact() {
                 <HelpCircle className="w-4 h-4 text-slate-400" /> Prefer localized messaging apps?
               </span>
               <a
-                href="https://wa.me/919325986821?text=Hello%20Adgrow%20Global%20Arya,%20I'm%20interested%20in%20inquiring%20about%20your%20export%20products."
-                target="_blank"
+                href="https://wa.me/918830737035?text=Hello%20Adgrow%20Global%20Arya,%20I'm%20interested%20in%20inquiring%20about%20your%20export%20products."
+                target="hello"
                 rel="noreferrer"
                 className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-550 text-emerald-700 font-bold hover:bg-emerald-500 hover:text-white transition"
               >

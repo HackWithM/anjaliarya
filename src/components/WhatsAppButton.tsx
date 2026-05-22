@@ -48,7 +48,7 @@ export default function WhatsAppButton() {
 
       {/* Floating green circular trigger */}
       <a
-        href="https://wa.me/919325986821?text=Hello%20Adgrow%20Global%20Arya,%20I'm%20interested%20in%20inquiring%20about%20your%20export%20import%20services."
+        href="https://wa.me/918830737035?text=Hello%20Adgrow%20Global%20Arya,%20I'm%20interested%20in%20inquiring%20about%20your%20export%20import%20services."
         target="_blank"
         rel="noreferrer"
         className="pointer-events-auto relative flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white hover:bg-emerald-600 shadow-2xl transition duration-300 group focus:outline-none"
