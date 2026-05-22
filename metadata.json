@@ -1,0 +1,6 @@
+{
+  "name": "Adgrow Global Arya",
+  "description": "Premium Corporate Export and Import Business website displaying agricultural products, global shipments, certifications, and international trading inquiries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
