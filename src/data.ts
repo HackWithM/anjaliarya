@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
     name: 'Spices Powder',
     category: 'Spices',
     description: 'Finely ground, rich, and aromatic blended spice powders manufactured under highly hygienic low-temperature grinding standards.',
-    image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://5.imimg.com/data5/SELLER/Default/2023/2/WR/KJ/OY/51747533/spice-powder-500x500.JPG',
     specifications: [
       'Type: Ground Blends',
       'Additives: No artificial coloring or preservatives',
@@ -46,7 +46,7 @@ export const PRODUCTS: Product[] = [
     name: 'Turmeric Powder',
     category: 'Spices',
     description: 'High curcumin turmeric powder featuring extreme golden-yellow hue, sourced from fertile, certified farms of Sangli.',
-    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=800',
+    image: 'https://vedicchakki.com/wp-content/uploads/2022/05/haldi-600x600.jpg',
     specifications: [
       'Curcumin Content: 3.5% to 5.0% Min',
       'Color: Dynamic Deep Golden Yellow',
@@ -82,7 +82,7 @@ export const PRODUCTS: Product[] = [
     name: 'Premium Jaggery',
     category: 'Agriculture',
     description: 'Organic unrefined cane sugars (blocks and powders) manufactured naturally without harmful clarifying chemicals.',
-    image: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&q=80&w=800',
+    image: 'https://chakkiwalle.com/cdn/shop/files/d69214c8-f3fb-42ab-a9f2-076c9477b65b.jpg?v=1708669172',
     specifications: [
       'Form: Solid Blocks / Granular Powder',
       'Sucrose Level: 85% to 90% Min',
@@ -100,7 +100,7 @@ export const PRODUCTS: Product[] = [
     name: 'Dehydrated Vegetables',
     category: 'Dehydrated',
     description: 'Sleek, heat-air dehydrated vegetable flakes and powders of wholesome Red Onions, Garlic, Ginger, Tomato, and Green Chili.',
-    image: 'https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&q=80&w=800',
+    image: 'https://usetorg.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Ftorg-cms-media%2Fmedia%2Foriginal_images%2FDehydrated_Vegetables_Market.png&w=1080&q=75',
     specifications: [
       'Variants: Flakes, Minced, Chopped, Powder',
       'Dehydration Process: Advanced Hot Air Tunnel',
@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
     name: 'Dehydrated Fruits',
     category: 'Dehydrated',
     description: 'Luscious, premium-grade naturally dried Indian Mangoes, Papaya, Bananas, and Pineapples without excess added corn syrups.',
-    image: 'https://images.unsplash.com/photo-1593134257782-e89567b7718a?auto=format&fit=crop&q=80&w=800',
+    image: 'https://cdn.wikifarmer.com/images/thumbnail/2023/08/How-to-Dehydrate-Tropical-Fruits-for-Natural-Healthy-Snacks-1-1200x630.jpg',
     specifications: [
       'Moisture: 15-20% max',
       'Process: Low-temp solar and convective drying',

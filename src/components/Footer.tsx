@@ -120,7 +120,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-2.5">
                 <Mail className="w-4.5 h-4.5 text-gold-500 shrink-0" />
-                <span>info@adgrowglobal.com</span>
+                <a href="mailto:sales@adgrowglobal.com" className="hover:text-gold-400 transition text-[13px]">sales@adgrowglobal.com</a>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Globe className="w-4.5 h-4.5 text-gold-500 shrink-0" />

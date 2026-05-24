@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, HelpCircle, FileSignature, CheckCircle, MessageSquare, ShieldAlert } from 'lucide-react';
 import { PRODUCTS } from '../data';
+import Toast from './Toast';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,13 +17,14 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMsg('');
@@ -30,23 +32,33 @@ export default function Contact() {
     // Field Validations
     if (!formData.name || !formData.email || !formData.phone || !formData.country || !formData.message) {
       setErrorMsg('Please populate all mandatory fields labeled with asterisk (*).');
+      setToast({
+        message: 'Please populate all mandatory fields labeled with asterisk (*).',
+        type: 'error',
+      });
       setIsSubmitting(false);
       return;
     }
 
-    // Simulate authentic API pipeline sending lead to our regional database
-    setTimeout(() => {
-      try {
-        const storedLeads = JSON.parse(localStorage.getItem('adgrow_leads') || '[]');
-        storedLeads.push({
-          ...formData,
-          id: Date.now(),
-          timestamp: new Date().toISOString(),
-        });
-        localStorage.setItem('adgrow_leads', JSON.stringify(storedLeads));
-        
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const accessToken = import.meta.env.VITE_EMAILJS_ACCESS_TOKEN;
+
+    // Check if EmailJS is configured
+    if (!serviceId || !templateId || !publicKey) {
+      console.warn(
+        'EmailJS environment variables are not configured in your .env file. Running in local fallback state.'
+      );
+      
+      // Simulate form action locally for development/debugging, and warn user clearly via Toast
+      setTimeout(() => {
         setIsSubmitting(false);
         setSuccessMsg(true);
+        setToast({
+          message: 'Lead recorded locally! Setup Guide: To send real emails to your Gmail account, configure your EmailJS credentials in the .env file.',
+          type: 'error',
+        });
         setFormData({
           name: '',
           email: '',
@@ -56,11 +68,62 @@ export default function Contact() {
           product: '',
           message: '',
         });
-      } catch (err) {
-        setErrorMsg('Problem recording database entry. Please try again.');
+      }, 1200);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
+          ...(accessToken ? { accessToken } : {}),
+          template_params: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company || 'N/A',
+            product: formData.product || 'Not Specified',
+            country: formData.country,
+            message: formData.message,
+          },
+        }),
+      });
+
+      if (response.ok) {
         setIsSubmitting(false);
+        setSuccessMsg(true);
+        setToast({
+          message: 'Your commercial inquiry trade dispatch was transmitted successfully!',
+          type: 'success',
+        });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          country: '',
+          product: '',
+          message: '',
+        });
+      } else {
+        const errorText = await response.text();
+        throw new Error(errorText || `HTTP status ${response.status}`);
       }
-    }, 1500);
+    } catch (err: any) {
+      console.error('EmailJS transmission failed:', err);
+      setIsSubmitting(false);
+      setErrorMsg(`Failed to transmit inquiry: ${err.message || 'API error'}`);
+      setToast({
+        message: `Transmission Blocked: ${err.message || 'Check network or credentials'}`,
+        type: 'error',
+      });
+    }
   };
 
   return (
@@ -130,10 +193,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">Digital Mailbox</h4>
                   <p className="text-sm text-slate-600 font-sans mt-0.5">
-                    General: <a href="mailto:info@adgrowglobal.com" className="hover:text-gold-600 transition font-medium">info@adgrowglobal.com</a>
-                  </p>
-                  <p className="text-sm text-slate-600 font-sans mt-0.5">
-                    Quotes: <a href="mailto:export@adgrowglobal.com" className="hover:text-gold-600 transition font-medium">export@adgrowglobal.com</a>
+                    Inquiries: <a href="mailto:sales@adgrowglobal.com" className="hover:text-gold-600 transition font-medium">sales@adgrowglobal.com</a>
                   </p>
                 </div>
               </div>
@@ -351,6 +411,14 @@ export default function Contact() {
         </div>
 
       </div>
+
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </section>
   );
 }
