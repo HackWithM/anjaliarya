@@ -1,8 +1,11 @@
 import { Product, Certification, Testimonial, GalleryItem } from './types';
+import heroImage from './assets/images/export_hero_1779437187624.png';
+import mainSpicesImage from './assets/images/indian_spices_1779437205190.png';
+import warehouseImage from './assets/images/warehouse_export_1779437222058.png';
 
-export const HERO_IMAGE = '/src/assets/images/export_hero_1779437187624.png';
-export const MAIN_SPICES_IMAGE = '/src/assets/images/indian_spices_1779437205190.png';
-export const WAREHOUSE_IMAGE = '/src/assets/images/warehouse_export_1779437222058.png';
+export const HERO_IMAGE = heroImage;
+export const MAIN_SPICES_IMAGE = mainSpicesImage;
+export const WAREHOUSE_IMAGE = warehouseImage;
 
 export const PRODUCTS: Product[] = [
   {
