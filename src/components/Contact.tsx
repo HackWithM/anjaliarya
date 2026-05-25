@@ -254,10 +254,11 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name */}
                   <div className="space-y-1.5">
-                    <label className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
+                    <label htmlFor="form-name" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
                       Representative Name <span className="text-rose-500">*</span>
                     </label>
                     <input
+                      id="form-name"
                       type="text"
                       name="name"
                       value={formData.name}
@@ -270,10 +271,11 @@ export default function Contact() {
 
                   {/* Email */}
                   <div className="space-y-1.5">
-                    <label className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
+                    <label htmlFor="form-email" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
                       Corporate Email Address <span className="text-rose-500">*</span>
                     </label>
                     <input
+                      id="form-email"
                       type="email"
                       name="email"
                       value={formData.email}
@@ -286,10 +288,11 @@ export default function Contact() {
 
                   {/* Phone */}
                   <div className="space-y-1.5">
-                    <label className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
+                    <label htmlFor="form-phone" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
                       Contact Phone &amp; Country Code <span className="text-rose-500">*</span>
                     </label>
                     <input
+                      id="form-phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
@@ -302,10 +305,11 @@ export default function Contact() {
 
                   {/* Company */}
                   <div className="space-y-1.5">
-                    <label className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
+                    <label htmlFor="form-company" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
                       Business Company Name
                     </label>
                     <input
+                      id="form-company"
                       type="text"
                       name="company"
                       value={formData.company}
@@ -317,7 +321,7 @@ export default function Contact() {
 
                   {/* Category of Sourcing / Product select */}
                   <div className="space-y-1.5">
-                    <label id="label-product" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
+                    <label htmlFor="form-product" id="label-product" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
                       Desired Product Specialty
                     </label>
                     <select
@@ -338,10 +342,11 @@ export default function Contact() {
 
                   {/* Country Destination */}
                   <div className="space-y-1.5">
-                    <label className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
+                    <label htmlFor="form-country" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
                       Destination Port Country <span className="text-rose-500">*</span>
                     </label>
                     <input
+                      id="form-country"
                       type="text"
                       name="country"
                       value={formData.country}
@@ -355,10 +360,11 @@ export default function Contact() {
 
                 {/* Message / Quantity */}
                 <div className="space-y-1.5">
-                  <label className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
+                  <label htmlFor="form-message" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
                     Message Dossier &amp; Tonnage Requirements <span className="text-rose-500">*</span>
                   </label>
                   <textarea
+                    id="form-message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}

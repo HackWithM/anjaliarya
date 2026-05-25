@@ -7,18 +7,20 @@ import { useState, useEffect } from 'react';
 import { Ship, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import AboutUs from './components/AboutUs';
-import Products from './components/Products';
-import WhyChooseUs from './components/WhyChooseUs';
-import GlobalReach from './components/GlobalReach';
-import Certifications from './components/Certifications';
-import Gallery from './components/Gallery';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
+
+const AboutUs = lazy(() => import('./components/AboutUs'));
+const Products = lazy(() => import('./components/Products'));
+const WhyChooseUs = lazy(() => import('./components/WhyChooseUs'));
+const GlobalReach = lazy(() => import('./components/GlobalReach'));
+const Certifications = lazy(() => import('./components/Certifications'));
+const Gallery = lazy(() => import('./components/Gallery'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const WhatsAppButton = lazy(() => import('./components/WhatsAppButton'));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -104,21 +106,41 @@ export default function App() {
             {/* Content Layout Sections */}
             <main className="flex-grow">
               <Hero />
-              <AboutUs />
-              <Products />
-              <WhyChooseUs />
-              <GlobalReach />
-              <Certifications />
-              <Gallery />
-              <Testimonials />
-              <Contact />
+              <Suspense fallback={<div className="min-h-[600px] bg-cream-50" />}>
+                <AboutUs />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[800px] bg-white" />}>
+                <Products />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[600px] bg-navy-900" />}>
+                <WhyChooseUs />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[600px] bg-cream-50" />}>
+                <GlobalReach />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[500px] bg-white" />}>
+                <Certifications />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[600px] bg-cream-50" />}>
+                <Gallery />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[500px] bg-navy-950" />}>
+                <Testimonials />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[600px] bg-white" />}>
+                <Contact />
+              </Suspense>
             </main>
 
             {/* Corporate Footer */}
-            <Footer />
+            <Suspense fallback={<div className="min-h-[200px] bg-navy-950" />}>
+              <Footer />
+            </Suspense>
 
             {/* WhatsApp Speed-dial Floating Desk */}
-            <WhatsAppButton />
+            <Suspense fallback={null}>
+              <WhatsAppButton />
+            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>

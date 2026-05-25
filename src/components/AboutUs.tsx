@@ -121,6 +121,7 @@ export default function AboutUs() {
                   alt="Corporate high-quality packaging and warehousing"
                   className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-white flex items-center space-x-3 bg-navy-950/40 backdrop-blur-sm p-4 rounded-lg">
@@ -140,6 +141,7 @@ export default function AboutUs() {
                     alt="Indian grain field"
                     className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg border border-slate-200/40 group">
@@ -148,6 +150,7 @@ export default function AboutUs() {
                     alt="Inspection grading spices"
                     className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
                 </div>
               </div>

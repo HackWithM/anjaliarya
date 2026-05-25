@@ -1,10 +1,10 @@
 import { Product, Certification, Testimonial, GalleryItem } from './types';
-import heroImage from './assets/images/export_hero_1779437187624.png';
-import mainSpicesImage from './assets/images/indian_spices_1779437205190.png';
-import warehouseImage from './assets/images/warehouse_export_1779437222058.png';
-import groundnutOilImage from './assets/images/Gemini_Generated_Image_n5mxubn5mxubn5mx.png';
-import coconutOilImage from './assets/images/coconut_oil.png';
-import safflowerOilImage from './assets/images/safflower_oil.png';
+import heroImage from './assets/images/export_hero_1779437187624.webp';
+import mainSpicesImage from './assets/images/indian_spices_1779437205190.webp';
+import warehouseImage from './assets/images/warehouse_export_1779437222058.webp';
+import groundnutOilImage from './assets/images/Gemini_Generated_Image_n5mxubn5mxubn5mx.webp';
+import coconutOilImage from './assets/images/coconut_oil.webp';
+import safflowerOilImage from './assets/images/safflower_oil.webp';
 
 
 export const HERO_IMAGE = heroImage;

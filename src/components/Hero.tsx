@@ -49,6 +49,7 @@ export default function Hero() {
           alt="Container vessel at sunset - Adgrow Global Arya Exim"
           className="w-full h-full object-cover object-center scale-105 animate-pulse-slow"
           referrerPolicy="no-referrer"
+          fetchPriority="high"
           style={{ animationDuration: '20s' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/80 to-navy-950/40" />

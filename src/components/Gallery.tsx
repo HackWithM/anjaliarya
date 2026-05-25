@@ -94,6 +94,7 @@ export default function Gallery() {
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
 
                 {/* Glassy overlay backdrop on hover */}
@@ -154,6 +155,7 @@ export default function Gallery() {
                     alt={filteredItems[lightboxIndex].title}
                     className="w-full h-full object-contain"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                   />
 
                   {/* Left / Right Navigational Arrows */}
