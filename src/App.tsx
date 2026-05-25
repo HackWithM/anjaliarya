@@ -14,6 +14,7 @@ import Hero from './components/Hero';
 
 const AboutUs = lazy(() => import('./components/AboutUs'));
 const Products = lazy(() => import('./components/Products'));
+const ProduceBanner = lazy(() => import('./components/ProduceBanner'));
 const WhyChooseUs = lazy(() => import('./components/WhyChooseUs'));
 const GlobalReach = lazy(() => import('./components/GlobalReach'));
 const Certifications = lazy(() => import('./components/Certifications'));
@@ -36,7 +37,7 @@ export default function App() {
 
   return (
     <div className="bg-cream-50 min-h-screen text-slate-800 font-sans antialiased selection:bg-gold-500 selection:text-navy-950 overflow-x-hidden">
-      
+
       <AnimatePresence mode="wait">
         {loading ? (
           /* Premium Full-Screen Corporate Preloader Overlay */
@@ -48,9 +49,9 @@ export default function App() {
           >
             {/* Visual background flair for pre-loader */}
             <div className="absolute inset-0 bg-[radial-gradient(rgba(184,144,71,0.03)_1.5px,transparent_1.5px)] bg-[size:40px_40px] pointer-events-none" />
-            
+
             <div className="text-center space-y-6 relative max-w-sm px-6">
-              
+
               {/* Rotating Logo Emblem */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -78,7 +79,7 @@ export default function App() {
                   <Loader2 className="w-3.5 h-3.5 animate-spin text-gold-500" />
                   <span>Loading Sourcing Catalog...</span>
                 </div>
-                
+
                 {/* Visual loading bar slider */}
                 <div className="w-48 bg-navy-900 border border-gold-600/10 h-1.5 rounded-full overflow-hidden">
                   <motion.div
@@ -116,6 +117,9 @@ export default function App() {
               </Suspense>
               <Suspense fallback={<div className="min-h-[800px] bg-white" />}>
                 <Products />
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[400px] bg-white" />}>
+                <ProduceBanner />
               </Suspense>
               <Suspense fallback={<div className="min-h-[600px] bg-navy-900" />}>
                 <WhyChooseUs />
