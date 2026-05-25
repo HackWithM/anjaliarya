@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import logoImage from '../assets/images/adgrow_logo.webp';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '#top' },
@@ -66,13 +67,20 @@ export default function Navbar() {
             <a
               href="#top"
               onClick={(e) => handleScrollToSection(e, '#top')}
-              className="flex items-center space-x-2 group focus:outline-none"
+              className="flex items-center space-x-1.5 group focus:outline-none"
             >
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-lg border border-gold-500 bg-navy-900 group-hover:bg-gold-600 transition-colors duration-300">
-                <span className="text-gold-400 group-hover:text-navy-950 font-bold text-lg leading-none">A</span>
-                <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
+              {/* AGA Shield Logo Image */}
+              <div className="relative flex-shrink-0">
+                <img
+                  src={logoImage}
+                  alt="ADGROW GLOBAL ARYA Logo"
+                  className="h-10 w-10 object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
+                  fetchPriority="high"
+                />
+                {/* Live indicator dot */}
+                <span className="absolute -bottom-0.5 -right-0.5 flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-gold-500"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold-500"></span>
                 </span>
               </div>
               <div className="flex flex-col">

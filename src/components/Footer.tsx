@@ -1,4 +1,5 @@
 import { Linkedin, Twitter, Instagram, Award, Phone, Mail, MapPin, Globe, ArrowUp } from 'lucide-react';
+import logoImage from '../assets/images/adgrow_logo.webp';
 
 export default function Footer() {
   const currentYear = 2026;
@@ -20,9 +21,12 @@ export default function Footer() {
           {/* Column 1: Brand details (Col span 4) */}
           <div className="lg:col-span-4 space-y-6">
             <a href="#top" className="flex items-center space-x-2 group focus:outline-none">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg border border-gold-500 bg-navy-900">
-                <span className="text-gold-400 font-bold text-lg leading-none">A</span>
-              </div>
+              <img
+                src={logoImage}
+                alt="ADGROW GLOBAL ARYA Logo"
+                className="h-10 w-10 object-contain drop-shadow-lg opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                loading="lazy"
+              />
               <div className="flex flex-col">
                 <span className="text-white text-lg font-bold tracking-widest leading-none">
                   ADGROW GLOBAL

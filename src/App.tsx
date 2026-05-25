@@ -4,8 +4,9 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Ship, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import logoImage from './assets/images/adgrow_logo.webp';
 
 import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
@@ -50,15 +51,19 @@ export default function App() {
             
             <div className="text-center space-y-6 relative max-w-sm px-6">
               
-              {/* Rotating Emblem */}
+              {/* Rotating Logo Emblem */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="relative flex items-center justify-center mx-auto w-20 h-20 rounded-2xl border-2 border-gold-500 bg-navy-900 shadow-2xl shadow-gold-500/10"
+                className="relative flex items-center justify-center mx-auto w-24 h-24"
               >
-                <span className="text-gold-400 font-extrabold text-3xl leading-none">A</span>
-                <div className="absolute inset-0 rounded-2xl border-t-2 border-t-gold-500 animate-spin" style={{ animationDuration: '3s' }} />
+                <img
+                  src={logoImage}
+                  alt="ADGROW GLOBAL ARYA"
+                  className="w-20 h-20 object-contain drop-shadow-2xl"
+                />
+                <div className="absolute inset-0 rounded-full border-t-2 border-t-gold-500/60 animate-spin" style={{ animationDuration: '3s' }} />
               </motion.div>
 
               {/* Title brand details */}
