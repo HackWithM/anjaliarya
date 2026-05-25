@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Target, Eye, Award, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { WAREHOUSE_IMAGE } from '../data';
+
+import { VEG_FRUIT_EXPORT } from '../data';
+
 
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState<'vision' | 'mission'>('vision');
@@ -117,7 +119,7 @@ export default function AboutUs() {
               {/* Primary Image */}
               <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 relative group">
                 <img
-                  src={WAREHOUSE_IMAGE}
+                  src={VEG_FRUIT_EXPORT}
                   alt="Corporate high-quality packaging and warehousing"
                   className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"

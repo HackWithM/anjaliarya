@@ -5,12 +5,12 @@ import warehouseImage from './assets/images/warehouse_export_1779437222058.webp'
 import groundnutOilImage from './assets/images/Gemini_Generated_Image_n5mxubn5mxubn5mx.webp';
 import coconutOilImage from './assets/images/coconut_oil.webp';
 import safflowerOilImage from './assets/images/safflower_oil.webp';
-
+import vegFruitExport from './assets/images/spi.png';
 
 export const HERO_IMAGE = heroImage;
 export const MAIN_SPICES_IMAGE = mainSpicesImage;
 export const WAREHOUSE_IMAGE = warehouseImage;
-
+export const VEG_FRUIT_EXPORT = vegFruitExport;
 export const PRODUCTS: Product[] = [
   {
     id: 'spices',
@@ -35,7 +35,7 @@ export const PRODUCTS: Product[] = [
     name: 'Spices Powder',
     category: 'Spices',
     description: 'Finely ground, rich, and aromatic blended spice powders manufactured under highly hygienic low-temperature grinding standards.',
-    image: 'https://5.imimg.com/data5/SELLER/Default/2023/2/WR/KJ/OY/51747533/spice-powder-500x500.JPG',
+    image: vegFruitExport,
     specifications: [
       'Type: Ground Blends',
       'Additives: No artificial coloring or preservatives',
