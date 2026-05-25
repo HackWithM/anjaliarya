@@ -5,14 +5,14 @@ import { PRODUCTS } from '../data';
 import { Product } from '../types';
 
 export default function Products() {
-  const [selectedCategory, setSelectedCategory] = useState<'All' | 'Spices' | 'Agriculture' | 'Dehydrated'>('All');
+  const [selectedCategory, setSelectedCategory] = useState<'All' | 'Spices' | 'Agriculture' | 'Dehydrated' | 'Pulses' | 'Oils' | 'Herbal'>('All');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const filteredProducts = selectedCategory === 'All'
     ? PRODUCTS
     : PRODUCTS.filter((p) => p.category === selectedCategory);
 
-  const categories: ('All' | 'Spices' | 'Agriculture' | 'Dehydrated')[] = ['All', 'Spices', 'Agriculture', 'Dehydrated'];
+  const categories: ('All' | 'Spices' | 'Agriculture' | 'Dehydrated' | 'Pulses' | 'Oils' | 'Herbal')[] = ['All', 'Spices', 'Agriculture', 'Dehydrated', 'Pulses', 'Oils', 'Herbal'];
 
   return (
     <section id="products" className="py-24 bg-white relative">
@@ -47,7 +47,7 @@ export default function Products() {
                   : 'bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-navy-900 border border-slate-200'
               }`}
             >
-              {category === 'All' ? 'All Products' : category}
+              {category === 'All' ? 'All Products' : category === 'Herbal' ? 'Herbal Extracts' : category}
             </button>
           ))}
         </div>

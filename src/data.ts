@@ -2,6 +2,10 @@ import { Product, Certification, Testimonial, GalleryItem } from './types';
 import heroImage from './assets/images/export_hero_1779437187624.png';
 import mainSpicesImage from './assets/images/indian_spices_1779437205190.png';
 import warehouseImage from './assets/images/warehouse_export_1779437222058.png';
+import groundnutOilImage from './assets/images/Gemini_Generated_Image_n5mxubn5mxubn5mx.png';
+import coconutOilImage from './assets/images/coconut_oil.png';
+import safflowerOilImage from './assets/images/safflower_oil.png';
+
 
 export const HERO_IMAGE = heroImage;
 export const MAIN_SPICES_IMAGE = mainSpicesImage;
@@ -133,6 +137,171 @@ export const PRODUCTS: Product[] = [
       'Elite snacking quality or dry cereal inclusion elements',
       'Retains vital heat-stable vitamins and mineral components'
     ]
+  },
+  // ── Pulses / Lentils ──────────────────────────────────────────────────────
+  {
+    id: 'toor-dal',
+    name: 'Toor Dal (Pigeon Pea)',
+    category: 'Pulses',
+    description: 'Premium double-polished Toor Dal from Maharashtra & Karnataka, prized for its rich protein content and distinctive earthy flavor profile across global markets.',
+    image: 'https://image1.jdomni.in/product/19042024/2B/9A/45/11C2ED7BE58098A412A376588E_1713534268704.webp?fit=around|500:500',
+    specifications: [
+      'Purity: 99.5% Min',
+      'Moisture: 12% Max',
+      'Admixture: 0.5% Max',
+      'Packaging: 25kg / 50kg PP Bags, FCL'
+    ],
+    benefits: [
+      'High protein content (22g per 100g) ideal for health-conscious markets',
+      'Consistent golden-yellow color with uniform bold grain size',
+      'Machine-cleaned, gravity-sorted and magnetically de-stoned'
+    ]
+  },
+  {
+    id: 'moong-dal',
+    name: 'Moong Dal (Green Gram)',
+    category: 'Pulses',
+    description: 'Split and hulled green moong lentils delivering a delicate, mildly sweet flavour profile—highly sought in Asian, Middle Eastern, and European food markets.',
+    image: 'https://www.greendna.in/cdn/shop/products/moong_750x.jpg?v=1560801672',
+    specifications: [
+      'Purity: 99% Min',
+      'Moisture: 11% Max',
+      'Form: Split & Hulled / Whole',
+      'Packaging: 25kg / 50kg Woven Bags'
+    ],
+    benefits: [
+      'Highly digestible and fast-cooking — reduces industrial processing time',
+      'Naturally gluten-free and rich in folate and magnesium',
+      'Year-round supply assured through multi-state procurement network'
+    ]
+  },
+  {
+    id: 'urad-dal',
+    name: 'Urad Dal (Black Gram)',
+    category: 'Pulses',
+    description: 'Whole and split black gram lentils — the foundational pulse in South Asian cuisine, exported across 40+ countries for idli, dosa, and protein supplement markets.',
+    image: 'https://5.imimg.com/data5/SELLER/Default/2024/8/439695484/ZY/JV/KJ/225734089/black-urad-chana-dal.jpg',
+    specifications: [
+      'Purity: 99% Min',
+      'Form: Whole Black / Split White',
+      'Moisture: 12% Max',
+      'Shelf Life: 18 Months in standard conditions'
+    ],
+    benefits: [
+      'Exceptional mucilaginous binding properties for food processing',
+      'Rich in iron and B-vitamins, aligning with nutraceutical demand',
+      'Dual-form export: whole (black skin-on) and de-husked white split'
+    ]
+  },
+  // ── Edible Oils ───────────────────────────────────────────────────────────
+  {
+    id: 'groundnut-oil',
+    name: 'Groundnut Oil',
+    category: 'Oils',
+    description: 'Cold-pressed and refined groundnut oil with a high smoke point and naturally sweet, nutty aroma — a preferred cooking medium across Europe, Africa, and the Far East.',
+    image: groundnutOilImage,
+    specifications: [
+      'Free Fatty Acid (FFA): 0.25% Max',
+      'Moisture: 0.1% Max',
+      'Peroxide Value: 10 meq/kg Max',
+      'Packaging: Flexi-tanks / 15L / 200L Drums'
+    ],
+    benefits: [
+      'High oleic content enhances cardiovascular health positioning',
+      'Stable at high cooking temperatures — preferred for deep-frying',
+      'Available in both crude and double-refined export grades'
+    ]
+  },
+  {
+    id: 'coconut-oil',
+    name: 'Coconut Oil',
+    category: 'Oils',
+    description: 'Virgin and refined coconut oil extracted from fresh Cocos nucifera — exported for food, cosmetics, and pharmaceutical markets with certifications for organic compliance.',
+    image: coconutOilImage,
+    specifications: [
+      'Type: Virgin / RBD Refined',
+      'Lauric Acid: 47% Min',
+      'Moisture: 0.1% Max',
+      'Packaging: 250ml to 200L, ISO Tanks'
+    ],
+    benefits: [
+      'High lauric acid content with proven antimicrobial properties',
+      'Dual-market positioning: culinary and cosmetic sectors',
+      'USDA Organic and EU Organic certification available on request'
+    ]
+  },
+  {
+    id: 'safflower-oil',
+    name: 'Safflower Oil',
+    category: 'Oils',
+    description: 'Light, near-colourless safflower oil with one of the highest linoleic acid concentrations — increasingly demanded by nutraceutical and premium cooking oil markets worldwide.',
+    image: safflowerOilImage,
+    specifications: [
+      'Linoleic Acid: 75% Min',
+      'Iodine Value: 140–150',
+      'FFA: 0.3% Max',
+      'Packaging: Flexi-tanks / 20L Tins / Bulk ISO'
+    ],
+    benefits: [
+      'Highest naturally occurring linoleic acid among all edible oils',
+      'Neutral flavour and high smoke point — ideal for gourmet applications',
+      'Suitable for diabetic-friendly and heart-health product lines'
+    ]
+  },
+  // ── Herbal & Natural Liquid Extracts ─────────────────────────────────────
+  {
+    id: 'amla-extract',
+    name: 'Amla Extract',
+    category: 'Herbal',
+    description: 'Standardised Indian gooseberry (Phyllanthus emblica) liquid extract with guaranteed Vitamin C potency — demanded by nutraceutical, Ayurvedic and functional beverage industries.',
+    image: 'https://5.imimg.com/data5/SELLER/Default/2025/9/546547257/JO/KH/VN/81952928/amla-plant-indian-gooseberry-webp.webp',
+    specifications: [
+      'Active: Vitamin C ≥ 35% (HPLC)',
+      'Form: Liquid / Spray-dried Powder',
+      'Solubility: Fully water-soluble',
+      'Packaging: 25kg HDPE Drums / 200kg IBCs'
+    ],
+    benefits: [
+      'Highest natural Vitamin C source commercially available',
+      'Powerful antioxidant activity for immune and skin health formulations',
+      'Shelf-stable up to 24 months in sealed, cold-chain conditions'
+    ]
+  },
+  {
+    id: 'lemon-extract',
+    name: 'Lemon Extract',
+    category: 'Herbal',
+    description: 'Pure citrus cold-pressed lemon peel extract and juice concentrate from Indian Eureka lemons — widely used in food flavouring, beverages, cosmetics, and pharmaceutical sectors.',
+    image: 'https://assets.clevelandclinic.org/transform/LargeFeatureImage/23b87888-c044-4c32-977a-1635af87fa22/lemons-2178111697',
+    specifications: [
+      'Citric Acid: 6.5% Min',
+      'Limonene Content: ≥ 65%',
+      'Brix (Concentrate): 45–55°',
+      'Packaging: Aseptic bags / 200L Drums / FCL'
+    ],
+    benefits: [
+      'Natural food-grade preservative properties via citric acid content',
+      'Intense, stable citrus aroma profile for beverage flavouring',
+      'Non-GMO, pesticide-residue-free certified on request'
+    ]
+  },
+  {
+    id: 'neem-extract',
+    name: 'Neem Extract',
+    category: 'Herbal',
+    description: 'Azadirachta indica standardised liquid extract with certified Azadirachtin content — internationally traded for organic agriculture, biopesticide, and pharmaceutical applications.',
+    image: 'https://5.imimg.com/data5/SELLER/Default/2021/3/TD/KI/KV/11724855/neem-azadirachta-indica-liquid-extract.jpg',
+    specifications: [
+      'Azadirachtin A: 1000–3000 ppm',
+      'Form: Water-soluble Liquid / Granules',
+      'Total Triterpenoids: 5% Min',
+      'Packaging: 1L, 5L, 25L, 200L Drums'
+    ],
+    benefits: [
+      'FDA-accepted biopesticide active — fast-growing regulatory acceptance globally',
+      'Sustainable, zero-synthetic-chemical alternative for organic farming',
+      'Broad-spectrum antimicrobial and anti-fungal properties'
+    ]
   }
 ];
 
@@ -238,7 +407,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'g1',
     category: 'packaging',
     title: 'Hygienic Vacuum Spice Sealing',
-    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=800'
+    image: 'https://www.toufood.com/wp-content/uploads/2016/07/Sous-Vide-Vegetables.jpg'
   },
   {
     id: 'g2',
@@ -256,7 +425,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'g4',
     category: 'raw',
     title: 'Pure Organic Turmeric Sortation',
-    image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&q=80&w=800'
+    image: 'https://www.jkcart.com/uploads/blogs/blogImg_342677828644963557286815391452.png'
   },
   {
     id: 'g5',
@@ -269,5 +438,60 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: 'cargo',
     title: 'Merchant Pallet Freight Secure Wrapping',
     image: 'https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&q=80&w=800'
+  },
+  // New product gallery items
+  {
+    id: 'g7',
+    category: 'raw',
+    title: 'Toor Dal (Pigeon Pea)',
+    image: 'https://image1.jdomni.in/product/19042024/2B/9A/45/11C2ED7BE58098A412A376588E_1713534268704.webp?fit=around|500:500'
+  },
+  {
+    id: 'g8',
+    category: 'raw',
+    title: 'Moong Dal (Green Gram)',
+    image: 'https://www.greendna.in/cdn/shop/products/moong_750x.jpg?v=1560801672'
+  },
+  {
+    id: 'g9',
+    category: 'raw',
+    title: 'Urad Dal (Black Gram)',
+    image: 'https://5.imimg.com/data5/SELLER/Default/2024/8/439695484/ZY/JV/KJ/225734089/black-urad-chana-dal.jpg'
+  },
+  {
+    id: 'g10',
+    category: 'raw',
+    title: 'Groundnut Oil',
+    image: groundnutOilImage
+  },
+  {
+    id: 'g11',
+    category: 'raw',
+    title: 'Coconut Oil',
+    image: coconutOilImage
+  },
+  {
+    id: 'g12',
+    category: 'raw',
+    title: 'Safflower Oil',
+    image: safflowerOilImage
+  },
+  {
+    id: 'g13',
+    category: 'raw',
+    title: 'Amla Extract',
+    image: 'https://5.imimg.com/data5/SELLER/Default/2025/9/546547257/JO/KH/VN/81952928/amla-plant-indian-gooseberry-webp.webp'
+  },
+  {
+    id: 'g14',
+    category: 'raw',
+    title: 'Lemon Extract',
+    image: 'https://assets.clevelandclinic.org/transform/LargeFeatureImage/23b87888-c044-4c32-977a-1635af87fa22/lemons-2178111697'
+  },
+  {
+    id: 'g15',
+    category: 'raw',
+    title: 'Neem Extract',
+    image: 'https://5.imimg.com/data5/SELLER/Default/2021/3/TD/KI/KV/11724855/neem-azadirachta-indica-liquid-extract.jpg'
   }
 ];

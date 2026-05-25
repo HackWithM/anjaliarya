@@ -144,7 +144,7 @@ export default function AboutUs() {
                 </div>
                 <div className="rounded-xl overflow-hidden shadow-lg border border-slate-200/40 group">
                   <img
-                    src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=400"
+                    src="https://www.globalgrinders.com/wp-content/uploads/2015/01/Buying-Whole-Spices.jpg"
                     alt="Inspection grading spices"
                     className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
                     referrerPolicy="no-referrer"

@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'Spices' | 'Agriculture' | 'Dehydrated';
+  category: 'Spices' | 'Agriculture' | 'Dehydrated' | 'Pulses' | 'Oils' | 'Herbal';
   description: string;
   image: string;
   specifications: string[];

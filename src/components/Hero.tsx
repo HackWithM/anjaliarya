@@ -160,7 +160,7 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-tr from-gold-500/10 via-transparent to-transparent rounded-2xl pointer-events-none" />
               <div className="h-full w-full rounded-xl border border-gold-600/10 overflow-hidden relative group">
                 <img
-                  src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&q=80&w=600"
+                  src="https://cdn-diekm.nitrocdn.com/HOwlnarUJjGHsEfHJVXlNeqNRJOnjIWW/assets/images/optimized/rev-4f278e7/www.globalgrinders.com/wp-content/uploads/2016/04/Facts-About-Whole-Spices.jpg.pagespeed.ce.SI-lP9yTyL.jpg"
                   alt="Quality Saffron and Spices"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
