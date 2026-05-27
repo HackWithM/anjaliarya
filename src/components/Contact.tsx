@@ -180,7 +180,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">Inquiry Helplines</h4>
                   <p className="text-sm text-slate-600 font-sans mt-0.5">
-                    Tel: <a href="tel:+919325986821" className="hover:text-gold-600 transition font-medium">+91 93259 86821</a>
+                    Tel: <a href="tel:+918830737035" className="hover:text-gold-600 transition font-medium">+91 88307 37035</a>
                   </p>
                   <p className="text-xs text-slate-400 font-sans">Available (09:00 - 18:00 IST / Mon - Sat)</p>
                 </div>
