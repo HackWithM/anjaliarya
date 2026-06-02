@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CheckCircle, ShieldAlert, X } from 'lucide-react';
+import { useTranslation } from '../i18n/LanguageContext';
 
 interface ToastProps {
   message: string;
@@ -10,6 +11,7 @@ interface ToastProps {
 
 export default function Toast({ message, type, onClose, duration = 5000 }: ToastProps) {
   const [progress, setProgress] = useState(100);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const startTime = Date.now();
@@ -51,7 +53,7 @@ export default function Toast({ message, type, onClose, duration = 5000 }: Toast
         {/* Text Content */}
         <div className="flex-1 space-y-1">
           <p className="font-display font-bold text-xs tracking-widest uppercase text-gold-400">
-            {isSuccess ? 'Dispatch Succeeded' : 'Dispatch Blocked'}
+            {isSuccess ? t('contact.toastSuccessTitle') : t('contact.toastErrorTitle')}
           </p>
           <p className="text-xs text-slate-300 font-sans leading-relaxed">
             {message}
@@ -78,7 +80,7 @@ export default function Toast({ message, type, onClose, duration = 5000 }: Toast
         />
       </div>
 
-      {/* Embedded slide-in animation styles to ensure portability */}
+      {/* Embedded slide-in animation styles */}
       <style>{`
         @keyframes toast-slide-in {
           from {

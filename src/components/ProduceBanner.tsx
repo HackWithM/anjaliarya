@@ -8,17 +8,20 @@ import {
   Clock,
 } from 'lucide-react';
 import vegFruitImage from '../assets/images/veg_fruit_export.webp';
+import { useTranslation } from '../i18n/LanguageContext';
 
 const keyPoints = [
-  { icon: Leaf,    label: 'Farm Fresh Produce',          desc: 'Sourced directly from trusted Indian farms' },
-  { icon: Package, label: 'Export Quality Packaging',    desc: 'Food-grade, oxygen-barrier material' },
-  { icon: Droplets,label: 'Hygienic Processing',         desc: 'Strict phytosanitary & fumigation standards' },
-  { icon: Globe,   label: 'Global Shipping Support',     desc: 'Reliable logistics to 30+ countries' },
-  { icon: Heart,   label: 'Rich Nutritional Value',      desc: 'Preserved freshness with cold-chain handling' },
-  { icon: Clock,   label: 'Timely International Delivery', desc: 'On-time fulfilment, every shipment' },
+  { icon: Leaf,    key: 'p1Label', descKey: 'p1Desc', fallbackLabel: 'Farm Fresh Produce',          fallbackDesc: 'Sourced directly from trusted Indian farms' },
+  { icon: Package, key: 'p2Label', descKey: 'p2Desc', fallbackLabel: 'Export Quality Packaging',    fallbackDesc: 'Food-grade, oxygen-barrier material' },
+  { icon: Droplets,key: 'p3Label', descKey: 'p3Desc', fallbackLabel: 'Hygienic Processing',         fallbackDesc: 'Strict phytosanitary & fumigation standards' },
+  { icon: Globe,   key: 'p4Label', descKey: 'p4Desc', fallbackLabel: 'Global Shipping Support',     fallbackDesc: 'Reliable logistics to 30+ countries' },
+  { icon: Heart,   key: 'p5Label', descKey: 'p5Desc', fallbackLabel: 'Rich Nutritional Value',      fallbackDesc: 'Preserved freshness with cold-chain handling' },
+  { icon: Clock,   key: 'p6Label', descKey: 'p6Desc', fallbackLabel: 'Timely International Delivery', fallbackDesc: 'On-time fulfilment, every shipment' },
 ];
 
 export default function ProduceBanner() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="produce-export"
@@ -56,13 +59,13 @@ export default function ProduceBanner() {
             {/* Label badge */}
             <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.28em] text-emerald-700 uppercase bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full">
               <Leaf className="w-3.5 h-3.5" />
-              Agriculture Export Division
+              {t('produce.tagline')}
             </span>
 
             {/* Heading */}
             <div className="space-y-3">
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-navy-900 leading-tight tracking-tight">
-                Fresh Vegetables &amp;{' '}
+                {t('produce.titlePart1')}{' '}
                 <span
                   className="relative inline-block"
                   style={{
@@ -72,21 +75,20 @@ export default function ProduceBanner() {
                     backgroundClip: 'text',
                   }}
                 >
-                  Fruits Export
+                  {t('produce.titlePart2')}
                 </span>
               </h2>
               <div className="w-16 h-1 rounded-full bg-gradient-to-r from-emerald-500 to-green-400" />
               <p className="text-slate-500 text-sm sm:text-[15px] leading-relaxed font-sans max-w-lg">
-                We supply export-quality fresh vegetables, fruits, dehydrated products, and agricultural
-                goods sourced directly from trusted Indian farms.
+                {t('produce.desc')}
               </p>
             </div>
 
             {/* Key Points Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {keyPoints.map(({ icon: Icon, label, desc }, i) => (
+              {keyPoints.map(({ icon: Icon, key, descKey, fallbackLabel, fallbackDesc }, i) => (
                 <motion.div
-                  key={label}
+                  key={key}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -99,10 +101,10 @@ export default function ProduceBanner() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-[13px] font-bold text-navy-900 leading-snug group-hover:text-emerald-700 transition-colors duration-200">
-                      {label}
+                      {t(`produce.points.${key}`) || fallbackLabel}
                     </p>
                     <p className="text-[11px] text-slate-400 leading-snug mt-0.5 font-sans">
-                      {desc}
+                      {t(`produce.points.${descKey}`) || fallbackDesc}
                     </p>
                   </div>
                 </motion.div>
@@ -122,7 +124,7 @@ export default function ProduceBanner() {
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-lg text-sm font-bold uppercase tracking-widest bg-gradient-to-r from-emerald-600 to-green-500 text-white shadow-md shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:from-emerald-700 hover:to-green-600 transition-all duration-300"
               >
                 <Globe className="w-4 h-4" />
-                Request Export Quote
+                {t('produce.btnQuote')}
               </a>
             </div>
           </motion.div>
@@ -158,10 +160,10 @@ export default function ProduceBanner() {
               {/* Floating badge */}
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm border border-emerald-100 rounded-xl px-4 py-2.5 shadow-lg">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
-                  Export Ready
+                  {t('produce.badgeReady')}
                 </p>
                 <p className="text-[13px] font-extrabold text-navy-900 leading-tight">
-                  Farm-to-Port Assured
+                  {t('produce.badgeAssured')}
                 </p>
               </div>
             </div>

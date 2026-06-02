@@ -1,8 +1,10 @@
-import { Linkedin, Twitter, Instagram, Award, Phone, Mail, MapPin, Globe, ArrowUp } from 'lucide-react';
+import { Linkedin, Facebook, Instagram, Phone, Mail, MapPin, Globe, ArrowUp } from 'lucide-react';
 import logoImage from '../assets/images/adgrow_logo.webp';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function Footer() {
   const currentYear = 2026;
+  const { t } = useTranslation();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -18,7 +20,7 @@ export default function Footer() {
         {/* Top footer row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-slate-800">
           
-          {/* Column 1: Brand details (Col span 4) */}
+          {/* Column 1: Brand details */}
           <div className="lg:col-span-4 space-y-6">
             <a href="#top" className="flex items-center space-x-2 group focus:outline-none">
               <img
@@ -38,85 +40,103 @@ export default function Footer() {
             </a>
             
             <p className="text-sm leading-relaxed text-slate-300">
-              A certified food and agricultural merchant trading firm bridging local cultivation excellence with rigor-tested global food supply standards. Shipping pure Indian nutrition worldwide.
+              {t('footer.desc')}
             </p>
 
             <div className="flex space-x-4">
-              <a href="#" className="p-2 rounded bg-white/5 border border-white/10 hover:border-gold-500 hover:text-gold-400 transition" aria-label="LinkedIn profile">
+              <a
+                href="https://facebook.com/share/1ECgtotK23/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded bg-white/5 border border-white/10 hover:border-gold-500 hover:text-gold-400 transition cursor-pointer"
+                aria-label="Facebook page"
+              >
+                <Facebook className="w-4.5 h-4.5" />
+              </a>
+              <a
+                href="https://linkedin.com/in/anjali-arya-bb3657411?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded bg-white/5 border border-white/10 hover:border-gold-500 hover:text-gold-400 transition cursor-pointer"
+                aria-label="LinkedIn profile"
+              >
                 <Linkedin className="w-4.5 h-4.5" />
               </a>
-              <a href="#" className="p-2 rounded bg-white/5 border border-white/10 hover:border-gold-500 hover:text-gold-400 transition" aria-label="Twitter handle">
-                <Twitter className="w-4.5 h-4.5" />
-              </a>
-              <a href="#" className="p-2 rounded bg-white/5 border border-white/10 hover:border-gold-500 hover:text-gold-400 transition" aria-label="Instagram gallery">
+              <a
+                href="https://www.instagram.com/adgrowglobal.export?igsh=aXN4Z2ttc2E5bDJ6&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded bg-white/5 border border-white/10 hover:border-gold-500 hover:text-gold-400 transition cursor-pointer"
+                aria-label="Instagram profile"
+              >
                 <Instagram className="w-4.5 h-4.5" />
               </a>
             </div>
           </div>
 
-          {/* Column 2: Quick Navigation Links (Col span 3) */}
+          {/* Column 2: Quick Navigation Links */}
           <div className="lg:col-span-3 space-y-6">
             <h4 className="font-display font-semibold text-sm uppercase tracking-wider text-white border-l-2 border-gold-500 pl-3">
-              Corporate Desk
+              {t('footer.linksTitle')}
             </h4>
             <ul className="space-y-3.5 text-sm">
               <li>
-                <a href="#about" className="hover:text-gold-400 transition">About Company</a>
+                <a href="#about" className="hover:text-gold-400 transition">{t('footer.navAbout')}</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold-400 transition">Agricultural Catalog</a>
+                <a href="#products" className="hover:text-gold-400 transition">{t('footer.navCatalog')}</a>
               </li>
               <li>
-                <a href="#why-choose-us" className="hover:text-gold-400 transition">Partner Advantages</a>
+                <a href="#why-choose-us" className="hover:text-gold-400 transition">{t('footer.navAdvantages')}</a>
               </li>
               <li>
-                <a href="#global-reach" className="hover:text-gold-400 transition">Our Export Map</a>
+                <a href="#global-reach" className="hover:text-gold-400 transition">{t('footer.navMap')}</a>
               </li>
               <li>
-                <a href="#certifications" className="hover:text-gold-400 transition">Licenses &amp; Permits</a>
+                <a href="#certifications" className="hover:text-gold-400 transition">{t('footer.navCerts')}</a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-gold-400 transition">Warehouse Gallery</a>
+                <a href="#gallery" className="hover:text-gold-400 transition">{t('footer.navGallery')}</a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Category quick shortcuts (Col span 2) */}
+          {/* Column 3: Category quick shortcuts */}
           <div className="lg:col-span-2 space-y-6">
             <h4 className="font-display font-semibold text-sm uppercase tracking-wider text-white border-l-2 border-gold-500 pl-3">
-              Core Products
+              {t('footer.productsTitle')}
             </h4>
             <ul className="space-y-3.5 text-sm">
               <li>
-                <a href="#products" className="hover:text-gold-400 transition">Spices Whole</a>
+                <a href="#products" className="hover:text-gold-400 transition">{t('footer.prodSpices')}</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold-400 transition">Turmeric Powder</a>
+                <a href="#products" className="hover:text-gold-400 transition">{t('footer.prodTurmeric')}</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold-400 transition">Agriculture Staples</a>
+                <a href="#products" className="hover:text-gold-400 transition">{t('footer.prodStaples')}</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold-400 transition">Organic Jaggery</a>
+                <a href="#products" className="hover:text-gold-400 transition">{t('footer.prodJaggery')}</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold-400 transition">Dried Vegetables</a>
+                <a href="#products" className="hover:text-gold-400 transition">{t('footer.prodVeg')}</a>
               </li>
               <li>
-                <a href="#products" className="hover:text-gold-400 transition">Dried Fruits</a>
+                <a href="#products" className="hover:text-gold-400 transition">{t('footer.prodFruits')}</a>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact details summary (Col span 3) */}
+          {/* Column 4: Contact details summary */}
           <div className="lg:col-span-3 space-y-6">
             <h4 className="font-display font-semibold text-sm uppercase tracking-wider text-white border-l-2 border-gold-500 pl-3">
-              Direct Contact
+              {t('footer.contactTitle')}
             </h4>
             <ul className="space-y-4 text-xs sm:text-sm">
               <li className="flex items-start space-x-2.5">
                 <MapPin className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" />
-                <span>PO: Nilanga, Dist. Latur, Maharashtra - 413521, India.</span>
+                <span>{t('contact.officeAddressValue')}</span>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Phone className="w-4.5 h-4.5 text-gold-500 shrink-0" />
@@ -139,16 +159,16 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-6">
           <div className="space-y-1.5 text-center md:text-left">
             <p>
-              &copy; {currentYear} <strong>ADGROW GLOBAL ARYA</strong> (Arya Exim). All Rights Reserved globally.
+              &copy; {currentYear} <strong>ADGROW GLOBAL ARYA</strong> (Arya Exim). {t('footer.allRightsReserved')}
             </p>
             <p className="text-[10px] leading-relaxed max-w-2xl text-slate-600 font-light">
-              Disclaimer: Sourcing parameters, standard packaging sizes (5kg/10kg/25kg), laboratory moisture content checks (SGS, Eurofins), and custom port rates fluctuate depending on direct harvesting yields and dynamic regional trade conditions.
+              {t('footer.disclaimer')}
             </p>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="p-3 bg-navy-900 border border-gold-600/10 rounded-full text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all flex items-center justify-center shadow"
+            className="p-3 bg-navy-900 border border-gold-600/10 rounded-full text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all flex items-center justify-center shadow cursor-pointer"
             aria-label="Scroll to top of website"
           >
             <ArrowUp className="w-4.5 h-4.5" />

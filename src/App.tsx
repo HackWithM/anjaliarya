@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImage from './assets/images/adgrow_logo.webp';
+import { useTranslation } from './i18n/LanguageContext';
 
 import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
@@ -26,6 +27,7 @@ const WhatsAppButton = lazy(() => import('./components/WhatsAppButton'));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Elegant loading delay to simulate secure blockchain tracing verification or global catalog setup
@@ -77,7 +79,7 @@ export default function App() {
               <div className="flex flex-col items-center space-y-2 pt-4">
                 <div className="flex items-center space-x-2 text-slate-400 text-xs tracking-wide">
                   <Loader2 className="w-3.5 h-3.5 animate-spin text-gold-500" />
-                  <span>Loading Sourcing Catalog...</span>
+                  <span>{t('preloader.loading')}</span>
                 </div>
 
                 {/* Visual loading bar slider */}
@@ -92,7 +94,7 @@ export default function App() {
               </div>
 
               <span className="text-[9px] text-slate-600 tracking-wider absolute bottom-0 left-0 right-0 leading-none">
-                AUTHENTIC MERCHANT TRADING CHANNELS
+                {t('preloader.tagline')}
               </span>
 
             </div>

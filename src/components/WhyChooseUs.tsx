@@ -1,41 +1,20 @@
 import { Award, Globe, Clock, Coins, FileText, Network, Sparkles, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
+import { useTranslation } from '../i18n/LanguageContext';
 
 const ADVANTAGES = [
-  {
-    icon: Award,
-    title: 'Premium Quality Products',
-    description: 'Double-sorted, gravity separated and magnet-cleared agriculture cargo. We guarantee perfect grade compliance, flavor, moisture and size parameters.',
-  },
-  {
-    icon: Globe,
-    title: 'Global Shipping & Logistics',
-    description: 'Alliances with major freight shipping lines (Maersk, MSC, CMA CGM) to execute streamlined custom-packed marine transits and cargo bookings.',
-  },
-  {
-    icon: Clock,
-    title: 'Timely Delivery Assured',
-    description: 'We respect delivery deadlines. Real-time fleet communication loops and active port handling ensure container embarkation is consistently on schedule.',
-  },
-  {
-    icon: Coins,
-    title: 'Highly Competitive Pricing',
-    description: 'Direct procurement alliances with regional growers eliminate intermediate traders, passing maximum savings and price consistency to your enterprise.',
-  },
-  {
-    icon: FileText,
-    title: 'Export Documentation Support',
-    description: 'Comprehensive clearance management: Certificate of Origin, Phytosanitary, APEDA, FSSAI regulatory permits, custom invoices handled instantly.',
-  },
-  {
-    icon: Network,
-    title: 'Trusted International Network',
-    description: 'Established merchant trading partnerships in North America, Europe, United Arab Emirates, and critical South East Asian industrial networks.',
-  }
+  { icon: Award, fallbackTitle: 'Premium Quality Products', fallbackDesc: 'Double-sorted, gravity separated and magnet-cleared agriculture cargo. We guarantee perfect grade compliance, flavor, moisture and size parameters.' },
+  { icon: Globe, fallbackTitle: 'Global Shipping & Logistics', fallbackDesc: 'Alliances with major freight shipping lines (Maersk, MSC, CMA CGM) to execute streamlined custom-packed marine transits and cargo bookings.' },
+  { icon: Clock, fallbackTitle: 'Timely Delivery Assured', fallbackDesc: 'We respect delivery deadlines. Real-time fleet communication loops and active port handling ensure container embarkation is consistently on schedule.' },
+  { icon: Coins, fallbackTitle: 'Highly Competitive Pricing', fallbackDesc: 'Direct procurement alliances with regional growers eliminate intermediate traders, passing maximum savings and price consistency to your enterprise.' },
+  { icon: FileText, fallbackTitle: 'Export Documentation Support', fallbackDesc: 'Comprehensive clearance management: Certificate of Origin, Phytosanitary, APEDA, FSSAI regulatory permits, custom invoices handled instantly.' },
+  { icon: Network, fallbackTitle: 'Trusted International Network', fallbackDesc: 'Established merchant trading partnerships in North America, Europe, United Arab Emirates, and critical South East Asian industrial networks.' }
 ];
 
 export default function WhyChooseUs() {
+  const { t } = useTranslation();
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -57,15 +36,15 @@ export default function WhyChooseUs() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
           <div className="space-y-4 max-w-2xl">
             <span className="text-xs font-bold tracking-[0.3em] text-gold-400 uppercase block font-display">
-              Uncompromising Merchancy
+              {t('why.tagline')}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold tracking-tight">
-              Why Partner With Adgrow Global Arya?
+              {t('why.title')}
             </h2>
             <div className="w-20 h-1 bg-gold-500 rounded" />
           </div>
           <p className="text-slate-300 font-sans text-sm sm:text-base max-w-md leading-relaxed font-light">
-            We operate under a simple ethos: client-centric absolute transparency, uncompromising harvest safety guidelines, and error-free global transit processing.
+            {t('why.subtitle')}
           </p>
         </div>
 
@@ -79,6 +58,9 @@ export default function WhyChooseUs() {
         >
           {ADVANTAGES.map((adv, index) => {
             const IconComponent = adv.icon;
+            const titleKey = `why.c${index + 1}Title`;
+            const descKey = `why.c${index + 1}Desc`;
+
             return (
               <motion.div
                 key={index}
@@ -96,10 +78,10 @@ export default function WhyChooseUs() {
 
                   <div className="space-y-3">
                     <h3 className="text-xl font-bold font-display text-white group-hover:text-gold-300 transition-colors">
-                      {adv.title}
+                      {t(titleKey) || adv.fallbackTitle}
                     </h3>
                     <p className="text-slate-400 text-sm leading-relaxed font-sans">
-                      {adv.description}
+                      {t(descKey) || adv.fallbackDesc}
                     </p>
                   </div>
                 </div>
@@ -120,15 +102,15 @@ export default function WhyChooseUs() {
               <Sparkles className="w-5 h-5 animate-pulse" />
             </div>
             <div>
-              <p className="font-display font-semibold text-white text-sm sm:text-base">Ready to review our technical export checklists?</p>
-              <p className="text-xs text-slate-400">Request specific test batch analyses or laboratory SGS certifications.</p>
+              <p className="font-display font-semibold text-white text-sm sm:text-base">{t('why.noteTitle')}</p>
+              <p className="text-xs text-slate-400">{t('why.noteDesc')}</p>
             </div>
           </div>
           <a
             href="#contact"
             className="inline-flex items-center space-x-2 px-6 py-3 rounded bg-gold-500 text-navy-950 text-xs font-bold uppercase tracking-widest hover:bg-gold-600 transition duration-300 shadow-md shadow-gold-500/10 shrink-0 w-full sm:w-auto text-center justify-center border border-gold-500"
           >
-            <span>Ask for a Sample</span>
+            <span>{t('why.noteBtn')}</span>
             <CheckCircle2 className="w-4 h-4" />
           </a>
         </div>

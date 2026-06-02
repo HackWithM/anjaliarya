@@ -2,8 +2,11 @@ import { ArrowRight, Globe, Shield, Anchor } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { HERO_IMAGE } from '../data';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   const handleScrollToSection = (targetId: string) => {
     const element = document.getElementById(targetId);
     if (element) {
@@ -54,7 +57,6 @@ export default function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/80 to-navy-950/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/50" />
-        {/* Subtle grid pattern overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(184,144,71,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(184,144,71,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
@@ -71,18 +73,18 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-gold-600/10 border border-gold-500/30 px-3.5 py-1.5 rounded-full backdrop-blur-sm">
               <span className="flex h-2 w-2 rounded-full bg-gold-500 animate-pulse" />
               <span className="text-gold-400 font-display text-[10px] sm:text-xs font-semibold uppercase tracking-widest">
-                AUTHENTIC INDIAN MERCHANT EXPORTER
+                {t('hero.tagline')}
               </span>
             </motion.div>
 
             {/* Main Headline */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-white font-extrabold tracking-tight leading-[1.1]">
-                Connecting Indian <br className="hidden sm:inline" />
-                <span className="relative">
-                  <span className="relative z-10 text-gold-400 drop-shadow">Quality</span>
+                {t('hero.titleStart')} <br className="hidden sm:inline" />
+                <span className="relative inline-block mx-1">
+                  <span className="relative z-10 text-gold-400 drop-shadow">{t('hero.titleHighlight')}</span>
                   <span className="absolute left-0 bottom-1 w-full h-2.5 bg-gold-600/20 -rotate-1 z-0" />
-                </span> to Global Markets
+                </span> {t('hero.titleEnd')}
               </h1>
             </motion.div>
 
@@ -91,7 +93,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-slate-300 font-sans text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-light"
             >
-              ADGROW GLOBAL ARYA is a trusted Indian export company delivering premium agricultural and food products worldwide. We bridge local cultivation perfection with rigorous global distribution standards.
+              {t('hero.subtitle')}
             </motion.p>
 
             {/* Action Buttons */}
@@ -101,50 +103,50 @@ export default function Hero() {
             >
               <button
                 onClick={() => handleScrollToSection('products')}
-                className="px-8 py-4 rounded bg-gold-500 hover:bg-gold-600 text-navy-950 text-sm font-semibold tracking-widest uppercase transition-all duration-300 shadow-lg shadow-gold-500/20 active:scale-95 flex items-center justify-center space-x-2 border border-gold-500"
+                className="px-8 py-4 rounded bg-gold-500 hover:bg-gold-600 text-navy-950 text-sm font-semibold tracking-widest uppercase transition-all duration-300 shadow-lg shadow-gold-500/20 active:scale-95 flex items-center justify-center space-x-2 border border-gold-500 cursor-pointer"
               >
-                <span>Explore Products</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>{t('hero.explore')}</span>
+                <ArrowRight className="w-4 h-4 rtl:rotate-180" />
               </button>
               
               <button
                 onClick={() => handleScrollToSection('contact')}
-                className="px-8 py-4 rounded border border-white/20 hover:border-gold-500 bg-white/5 hover:bg-navy-900/40 text-white hover:text-gold-400 text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center space-x-2 active:scale-95"
+                className="px-8 py-4 rounded border border-white/20 hover:border-gold-500 bg-white/5 hover:bg-navy-900/40 text-white hover:text-gold-400 text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center space-x-2 active:scale-95 cursor-pointer"
               >
-                <span>Contact Us</span>
+                <span>{t('hero.contact')}</span>
               </button>
             </motion.div>
 
             {/* Trust Badges */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-500/20 max-w-2xl text-left"
+              className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-500/20 max-w-2xl text-left rtl:text-right"
             >
-              <div className="flex items-center space-x-2.5">
+              <div className="flex items-center space-x-2.5 rtl:space-x-reverse">
                 <div className="p-1.5 rounded bg-white/5 border border-white/10 text-gold-400">
                   <Globe className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white text-xs sm:text-sm font-semibold">100% Export</span>
-                  <span className="text-[10px] text-slate-400">Strictly Global</span>
+                  <span className="text-white text-xs sm:text-sm font-semibold">{t('hero.exportLabel')}</span>
+                  <span className="text-[10px] text-slate-400">{t('hero.exportSub')}</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-2.5">
+              <div className="flex items-center space-x-2.5 rtl:space-x-reverse">
                 <div className="p-1.5 rounded bg-white/5 border border-white/10 text-gold-400">
                   <Shield className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white text-xs sm:text-sm font-semibold">Assured Quality</span>
-                  <span className="text-[10px] text-slate-400">SGS / APEDA Standards</span>
+                  <span className="text-white text-xs sm:text-sm font-semibold">{t('hero.qualityLabel')}</span>
+                  <span className="text-[10px] text-slate-400">{t('hero.qualitySub')}</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-2.5">
+              <div className="flex items-center space-x-2.5 rtl:space-x-reverse">
                 <div className="p-1.5 rounded bg-white/5 border border-white/10 text-gold-400">
                   <Anchor className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-white text-xs sm:text-sm font-semibold">Port Access</span>
-                  <span className="text-[10px] text-slate-400">Direct Port Sourcing</span>
+                  <span className="text-white text-xs sm:text-sm font-semibold">{t('hero.portLabel')}</span>
+                  <span className="text-[10px] text-slate-400">{t('hero.portSub')}</span>
                 </div>
               </div>
             </motion.div>
@@ -166,9 +168,9 @@ export default function Hero() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="text-[10px] text-gold-400 tracking-widest uppercase font-medium">Core Speciality</span>
-                  <p className="text-white font-display text-sm font-bold">Premium Indian Saffron & Ground Spices</p>
+                <div className="absolute bottom-4 left-4 right-4 rtl:left-auto rtl:right-4">
+                  <span className="text-[10px] text-gold-400 tracking-widest uppercase font-medium">{t('hero.coreSpeciality')}</span>
+                  <p className="text-white font-display text-sm font-bold">{t('hero.specialityTitle')}</p>
                 </div>
               </div>
             </motion.div>

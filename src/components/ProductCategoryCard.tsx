@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Box } from 'lucide-react';
 import { CategoryMeta } from '../categoryData';
+import { useTranslation } from '../i18n/LanguageContext';
 
 interface ProductCategoryCardProps {
   category: CategoryMeta;
@@ -9,6 +10,8 @@ interface ProductCategoryCardProps {
 }
 
 export default function ProductCategoryCard({ category, isActive, onClick }: ProductCategoryCardProps) {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       layout
@@ -28,7 +31,7 @@ export default function ProductCategoryCard({ category, isActive, onClick }: Pro
       <div className="relative h-56 w-full overflow-hidden bg-slate-100">
         <img
           src={category.image}
-          alt={category.title}
+          alt={t(`categories.${category.id}.title`)}
           className={`w-full h-full object-cover transition-transform duration-700 ease-out ${
             isActive ? 'scale-110' : 'group-hover:scale-110'
           }`}
@@ -48,7 +51,7 @@ export default function ProductCategoryCard({ category, isActive, onClick }: Pro
           <h3 className={`font-display font-bold text-xl transition-colors ${
             isActive ? 'text-gold-600' : 'text-navy-900 group-hover:text-gold-600'
           }`}>
-            {category.title}
+            {t(`categories.${category.id}.title`)}
           </h3>
           <Box className={`w-5 h-5 transition-colors ${
             isActive ? 'text-gold-500' : 'text-slate-400 group-hover:text-gold-400'
@@ -56,17 +59,17 @@ export default function ProductCategoryCard({ category, isActive, onClick }: Pro
         </div>
         
         <p className="text-slate-500 text-sm font-sans flex-grow leading-relaxed">
-          {category.description}
+          {t(`categories.${category.id}.desc`)}
         </p>
 
         <div className="pt-4 border-t border-slate-200 flex items-center justify-between mt-auto">
           <span className="text-[11px] text-slate-400 font-medium tracking-wider uppercase font-mono">
-            {isActive ? 'Currently Viewing' : 'Explore Category'}
+            {isActive ? t('products.currentlyViewing') : t('products.exploreCategory')}
           </span>
           <div className={`inline-flex items-center text-xs font-bold uppercase tracking-wider transition-colors ${
             isActive ? 'text-gold-600' : 'text-navy-900 group-hover:text-gold-600'
           }`}>
-            <span>View Products</span>
+            <span>{t('products.viewProducts')}</span>
             <ArrowRight className={`w-4 h-4 ml-1.5 transition-transform ${
               isActive ? 'translate-x-1' : 'group-hover:translate-x-1'
             }`} />

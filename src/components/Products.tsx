@@ -4,10 +4,12 @@ import { PRODUCTS } from '../data';
 import { CATEGORIES, ProductCategory } from '../categoryData';
 import ProductCategoryCard from './ProductCategoryCard';
 import ProductGrid from './ProductGrid';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState<ProductCategory | null>(null);
   const productsGridRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const handleCategoryClick = (categoryId: ProductCategory) => {
     setActiveCategory(categoryId);
@@ -35,14 +37,14 @@ export default function Products() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <span className="text-xs font-bold tracking-[0.3em] text-gold-600 uppercase block">
-            Premium Global Catalog
+            {t('products.tagline')}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-navy-900 tracking-tight">
-            Our Export Specialties
+            {t('products.title')}
           </h2>
           <div className="w-24 h-1 bg-gold-500 mx-auto rounded" />
           <p className="text-slate-500 font-sans text-sm sm:text-base leading-relaxed">
-            Every product in our export roster undergoes strict calibration, standard phytosanitary fumigation, and is safely packaged in food-grade, multi-layer oxygen-barrier material ready for marine journeys.
+            {t('products.desc')}
           </p>
         </div>
 

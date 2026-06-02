@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, HelpCircle, FileSignature, CheckCircle, MessageSquare, ShieldAlert } from 'lucide-react';
 import { PRODUCTS } from '../data';
 import Toast from './Toast';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,9 +33,10 @@ export default function Contact() {
 
     // Field Validations
     if (!formData.name || !formData.email || !formData.phone || !formData.country || !formData.message) {
-      setErrorMsg('Please populate all mandatory fields labeled with asterisk (*).');
+      const errMsg = t('contact.errorMandatory') || 'Please populate all mandatory fields labeled with asterisk (*).';
+      setErrorMsg(errMsg);
       setToast({
-        message: 'Please populate all mandatory fields labeled with asterisk (*).',
+        message: errMsg,
         type: 'error',
       });
       setIsSubmitting(false);
@@ -51,12 +54,12 @@ export default function Contact() {
         'EmailJS environment variables are not configured in your .env file. Running in local fallback state.'
       );
       
-      // Simulate form action locally for development/debugging, and warn user clearly via Toast
+      // Simulate form action locally
       setTimeout(() => {
         setIsSubmitting(false);
         setSuccessMsg(true);
         setToast({
-          message: 'Lead recorded locally! Setup Guide: To send real emails to your Gmail account, configure your EmailJS credentials in the .env file.',
+          message: t('contact.toastLocalFallback') || 'Lead recorded locally! Setup Guide: To send real emails to your Gmail account, configure your EmailJS credentials in the .env file.',
           type: 'error',
         });
         setFormData({
@@ -99,7 +102,7 @@ export default function Contact() {
         setIsSubmitting(false);
         setSuccessMsg(true);
         setToast({
-          message: 'Your commercial inquiry trade dispatch was transmitted successfully!',
+          message: t('contact.toastSuccess') || 'Your commercial inquiry trade dispatch was transmitted successfully!',
           type: 'success',
         });
         setFormData({
@@ -118,9 +121,10 @@ export default function Contact() {
     } catch (err: any) {
       console.error('EmailJS transmission failed:', err);
       setIsSubmitting(false);
-      setErrorMsg(`Failed to transmit inquiry: ${err.message || 'API error'}`);
+      const errMsg = `${t('contact.toastError') || 'Transmission Blocked: '}${err.message || 'API error'}`;
+      setErrorMsg(errMsg);
       setToast({
-        message: `Transmission Blocked: ${err.message || 'Check network or credentials'}`,
+        message: errMsg,
         type: 'error',
       });
     }
@@ -135,27 +139,27 @@ export default function Contact() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
           <span className="text-xs font-bold tracking-[0.3em] text-gold-600 uppercase block">
-            Direct Trade Desk
+            {t('contact.tagline')}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-navy-900 tracking-tight">
-            Initiate An Export Quote
+            {t('contact.title')}
           </h2>
           <div className="w-24 h-1 bg-gold-500 mx-auto rounded" />
           <p className="text-slate-500 font-sans text-sm sm:text-base pr-2 pl-2">
-            Have questions about regional sourcing, cargo shipping times, minimum order container thresholds (MOQs), or raw specifications analysis certifications? Write us directly.
+            {t('contact.desc')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Coordinates details & Google Maps map */}
+          {/* Left Column: Coordinates details */}
           <div className="lg:col-span-5 space-y-10">
             <div className="space-y-6">
               <h3 className="font-display font-bold text-2xl text-navy-900 tracking-tight">
-                Corporate Office Coordinates
+                {t('contact.officeTitle')}
               </h3>
               <p className="text-slate-500 font-sans text-sm leading-relaxed">
-                Our main executive officers guide maritime clearances and partner logistics out of corporate hubs in Maharashtra, connected closely to major container ports.
+                {t('contact.officeDesc')}
               </p>
             </div>
 
@@ -166,9 +170,9 @@ export default function Contact() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">Office Address</h4>
+                  <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">{t('contact.officeAddressLabel')}</h4>
                   <p className="text-sm text-slate-600 font-sans mt-1">
-                    Nilkantheshwar market yard anand muni chowk, PO: Nilanga, Dist. Latur, Maharashtra - 413521, India.
+                    {t('contact.officeAddressValue')}
                   </p>
                 </div>
               </div>
@@ -178,11 +182,11 @@ export default function Contact() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">Inquiry Helplines</h4>
+                  <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">{t('contact.helplineLabel')}</h4>
                   <p className="text-sm text-slate-600 font-sans mt-0.5">
                     Tel: <a href="tel:+918830737035" className="hover:text-gold-600 transition font-medium">+91 88307 37035</a>
                   </p>
-                  <p className="text-xs text-slate-400 font-sans">Available (09:00 - 18:00 IST / Mon - Sat)</p>
+                  <p className="text-xs text-slate-400 font-sans">{t('contact.helplineHours')}</p>
                 </div>
               </div>
 
@@ -191,7 +195,7 @@ export default function Contact() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">Digital Mailbox</h4>
+                  <h4 className="font-display font-bold text-sm text-navy-900 uppercase tracking-widest">{t('contact.mailboxLabel')}</h4>
                   <p className="text-sm text-slate-600 font-sans mt-0.5">
                     Inquiries: <a href="mailto:sales@adgrowglobal.com" className="hover:text-gold-600 transition font-medium">sales@adgrowglobal.com</a>
                   </p>
@@ -199,7 +203,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Premium Responsively Embedded Google Map Iframe */}
+            {/* Google Map Iframe */}
             <div className="border border-slate-200/80 rounded-xl overflow-hidden shadow-sm h-64 bg-slate-100">
               <iframe
                 title="Adgrow Global Arya Nilanga Corporate Office Map"
@@ -216,10 +220,10 @@ export default function Contact() {
           <div className="lg:col-span-7 bg-cream-100 p-8 sm:p-10 rounded-2xl border border-slate-200/60 shadow-lg shadow-cream-100/30">
             <div className="space-y-3 mb-8">
               <h3 className="font-display font-extrabold text-2xl text-navy-900 tracking-tight flex items-center gap-2">
-                <FileSignature className="w-6 h-6 text-gold-600" /> Commercial Export Inquiry
+                <FileSignature className="w-6 h-6 text-gold-600" /> {t('contact.formTitle')}
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 font-sans">
-                Fill this dossier. One of our export traders will follow up within 12 business hours.
+                {t('contact.formDesc')}
               </p>
             </div>
 
@@ -237,16 +241,16 @@ export default function Contact() {
                   <CheckCircle className="w-12 h-12" />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="font-display font-bold text-xl text-navy-900">Inquiry Transmitted Successfully</h4>
+                  <h4 className="font-display font-bold text-xl text-navy-900">{t('contact.successTitle')}</h4>
                   <p className="text-sm text-slate-500 font-sans max-w-md mx-auto">
-                    Your trade requirements files have been recorded under secure local ledger storage on our client system. An export handling executive has been dispatched to draft visual logistics calculations.
+                    {t('contact.successDesc')}
                   </p>
                 </div>
                 <button
                   onClick={() => setSuccessMsg(false)}
-                  className="px-6 py-2.5 rounded bg-navy-900 text-gold-400 hover:bg-gold-500 hover:text-navy-950 font-display font-bold uppercase text-xs tracking-wider transition-colors"
+                  className="px-6 py-2.5 rounded bg-navy-900 text-gold-400 hover:bg-gold-500 hover:text-navy-950 font-display font-bold uppercase text-xs tracking-wider transition-colors cursor-pointer"
                 >
-                  Send another Inquiry
+                  {t('contact.btnAnother')}
                 </button>
               </div>
             ) : (
@@ -255,7 +259,7 @@ export default function Contact() {
                   {/* Name */}
                   <div className="space-y-1.5">
                     <label htmlFor="form-name" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
-                      Representative Name <span className="text-rose-500">*</span>
+                      {t('contact.labelName')} <span className="text-rose-500">*</span>
                     </label>
                     <input
                       id="form-name"
@@ -272,7 +276,7 @@ export default function Contact() {
                   {/* Email */}
                   <div className="space-y-1.5">
                     <label htmlFor="form-email" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
-                      Corporate Email Address <span className="text-rose-500">*</span>
+                      {t('contact.labelEmail')} <span className="text-rose-500">*</span>
                     </label>
                     <input
                       id="form-email"
@@ -280,7 +284,7 @@ export default function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="e.g. s sourcing@eurospices.com"
+                      placeholder="e.g. sourcing@eurospices.com"
                       className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-gold-500 focus:outline-none rounded-lg px-4 py-3 text-sm text-navy-900 font-sans transition-all"
                       required
                     />
@@ -289,7 +293,7 @@ export default function Contact() {
                   {/* Phone */}
                   <div className="space-y-1.5">
                     <label htmlFor="form-phone" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
-                      Contact Phone &amp; Country Code <span className="text-rose-500">*</span>
+                      {t('contact.labelPhone')} <span className="text-rose-500">*</span>
                     </label>
                     <input
                       id="form-phone"
@@ -306,7 +310,7 @@ export default function Contact() {
                   {/* Company */}
                   <div className="space-y-1.5">
                     <label htmlFor="form-company" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
-                      Business Company Name
+                      {t('contact.labelCompany')}
                     </label>
                     <input
                       id="form-company"
@@ -322,7 +326,7 @@ export default function Contact() {
                   {/* Category of Sourcing / Product select */}
                   <div className="space-y-1.5">
                     <label htmlFor="form-product" id="label-product" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
-                      Desired Product Specialty
+                      {t('contact.labelCategory')}
                     </label>
                     <select
                       id="form-product"
@@ -331,10 +335,10 @@ export default function Contact() {
                       onChange={handleInputChange}
                       className="w-full bg-white border border-slate-200 hover:border-slate-300 focus:border-gold-500 focus:outline-none rounded-lg px-4 py-3 text-sm text-navy-900 font-sans transition-all"
                     >
-                      <option value="">Select commodity...</option>
+                      <option value="">{t('contact.selectCommodity')}</option>
                       {PRODUCTS.map((prod) => (
                         <option key={prod.id} value={prod.name}>
-                          {prod.name}
+                          {t(`products.${prod.id.replace(/-([a-z])/g, (g) => g[1].toUpperCase())}.name`) || prod.name}
                         </option>
                       ))}
                     </select>
@@ -343,7 +347,7 @@ export default function Contact() {
                   {/* Country Destination */}
                   <div className="space-y-1.5">
                     <label htmlFor="form-country" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
-                      Destination Port Country <span className="text-rose-500">*</span>
+                      {t('contact.labelCountry')} <span className="text-rose-500">*</span>
                     </label>
                     <input
                       id="form-country"
@@ -361,7 +365,7 @@ export default function Contact() {
                 {/* Message / Quantity */}
                 <div className="space-y-1.5">
                   <label htmlFor="form-message" className="text-xs uppercase font-bold tracking-wider text-navy-900 font-display block">
-                    Message Dossier &amp; Tonnage Requirements <span className="text-rose-500">*</span>
+                    {t('contact.labelMessage')} <span className="text-rose-500">*</span>
                   </label>
                   <textarea
                     id="form-message"
@@ -379,17 +383,17 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded bg-navy-900 text-gold-400 hover:bg-gold-500 hover:text-navy-950 text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md flex items-center justify-center space-x-2 border border-navy-900 disabled:opacity-50"
+                  className="w-full py-4 rounded bg-navy-900 text-gold-400 hover:bg-gold-500 hover:text-navy-950 text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md flex items-center justify-center space-x-2 border border-navy-900 disabled:opacity-50 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
                       <div className="w-5 h-5 rounded-full border-2 border-slate-300 border-t-gold-400 animate-spin" />
-                      <span>Validating Cargo Credentials...</span>
+                      <span>{t('contact.btnSending')}</span>
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Transmit Trade Dispatch</span>
+                      <span>{t('contact.btnSend')}</span>
                     </>
                   )}
                 </button>
@@ -399,16 +403,16 @@ export default function Contact() {
             {/* Quick Live Contact Link */}
             <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
               <span className="flex items-center gap-1.5 leading-none">
-                <HelpCircle className="w-4 h-4 text-slate-400" /> Prefer localized messaging apps?
+                <HelpCircle className="w-4 h-4 text-slate-400" /> {t('contact.whatsappPrefer')}
               </span>
               <a
                 href="https://wa.me/918830737035?text=Hello%20Adgrow%20Global%20Arya,%20I'm%20interested%20in%20inquiring%20about%20your%20export%20products."
                 target="hello"
                 rel="noreferrer"
-                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-550 text-emerald-700 font-bold hover:bg-emerald-500 hover:text-white transition"
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-550 text-emerald-700 font-bold hover:bg-emerald-500 hover:text-white transition cursor-pointer"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
-                <span>Negotiate on WhatsApp</span>
+                <span>{t('contact.whatsappNegotiate')}</span>
               </a>
             </div>
 
