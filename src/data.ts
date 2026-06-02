@@ -5,7 +5,7 @@ import warehouseImage from './assets/images/warehouse_export_1779437222058.webp'
 import groundnutOilImage from './assets/images/Gemini_Generated_Image_n5mxubn5mxubn5mx.webp';
 import coconutOilImage from './assets/images/coconut_oil.webp';
 import safflowerOilImage from './assets/images/safflower_oil.webp';
-import vegFruitExport from './assets/images/spi.png';
+import vegFruitExport from './assets/images/spi.jpg';
 
 export const HERO_IMAGE = heroImage;
 export const MAIN_SPICES_IMAGE = mainSpicesImage;
