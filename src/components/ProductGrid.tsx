@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, BadgeCheck, FileCheck2, Info, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Product } from '../types';
@@ -6,23 +6,91 @@ import { useTranslation } from '../i18n/LanguageContext';
 
 interface ProductGridProps {
   products: Product[];
+  isModal?: boolean;
 }
 
 const toCamelCase = (str: string) => {
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 };
 
-export default function ProductGrid({ products }: ProductGridProps) {
+export default function ProductGrid({ products, isModal = false }: ProductGridProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { t } = useTranslation();
+  const specsModalRef = useRef<HTMLDivElement>(null);
+  const lastActiveProductElementRef = useRef<HTMLElement | null>(null);
+
+  const handleOpenSpecs = (product: Product) => {
+    lastActiveProductElementRef.current = document.activeElement as HTMLElement;
+    setSelectedProduct(product);
+  };
+
+  useEffect(() => {
+    if (!selectedProduct) {
+      if (lastActiveProductElementRef.current) {
+        lastActiveProductElementRef.current.focus();
+      }
+      return;
+    }
+
+    // Focus the specs modal container or first button
+    const focusable = specsModalRef.current?.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable && focusable.length > 0) {
+      focusable[0].focus();
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedProduct(null);
+      }
+    };
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      if (!specsModalRef.current) return;
+
+      const focusableElements = Array.from(
+        specsModalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter(el => !el.hasAttribute('disabled') && el.getAttribute('tabindex') !== '-1');
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleTabKey);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', handleTabKey);
+    };
+  }, [selectedProduct]);
 
   return (
-    <div className="mt-16 pt-16 border-t border-slate-200/60 relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-6">
-        <span className="text-xs font-bold tracking-[0.2em] text-gold-600 uppercase bg-cream-50 px-4 py-1.5 rounded-full border border-gold-500/20 shadow-sm">
-          {t('products.availableProducts')}
-        </span>
-      </div>
+    <div className={isModal ? "relative" : "mt-16 pt-16 border-t border-slate-200/60 relative"}>
+      {!isModal && (
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-6">
+          <span className="text-xs font-bold tracking-[0.2em] text-gold-600 uppercase bg-cream-50 px-4 py-1.5 rounded-full border border-gold-500/20 shadow-sm">
+            {t('products.availableProducts')}
+          </span>
+        </div>
+      )}
       
       {/* Products Grid */}
       <motion.div
@@ -49,11 +117,11 @@ export default function ProductGrid({ products }: ProductGridProps) {
                 {/* Product Image Panel */}
                 <div className="relative h-64 w-full overflow-hidden bg-slate-100">
                   <img
-                    src={product.image}
-                    alt={translatedName}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
+                     src={product.image}
+                     alt={translatedName}
+                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                     referrerPolicy="no-referrer"
+                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-90" />
                   
@@ -77,7 +145,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                       <BadgeCheck className="w-4.5 h-4.5 text-gold-600" /> {t('products.exportQualityVerified')}
                     </span>
                     <button
-                      onClick={() => setSelectedProduct(product)}
+                      onClick={() => handleOpenSpecs(product)}
                       className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-navy-900 group-hover:text-gold-600 transition-colors cursor-pointer"
                     >
                       <span>{t('products.specifications')}</span>
@@ -101,23 +169,25 @@ export default function ProductGrid({ products }: ProductGridProps) {
           const translatedBenefits: string[] = t(`products.${camelId}.benefits`) || selectedProduct.benefits;
 
           return (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
               {/* Backdrop */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedProduct(null)}
-                className="absolute inset-0 bg-navy-950/70 backdrop-blur-sm"
+                className="absolute inset-0 bg-navy-950/70 backdrop-blur-sm cursor-pointer"
               />
 
               {/* Modal Box Content */}
               <motion.div
+                ref={specsModalRef}
+                tabIndex={-1}
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-                className="relative bg-white max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl border border-gold-600/20 z-10 flex flex-col max-h-[90vh]"
+                className="product-specs-modal relative bg-white max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl border border-gold-600/20 z-10 flex flex-col max-h-[90vh]"
               >
                 {/* Header banner */}
                 <div className="relative h-48 sm:h-56 bg-slate-100 flex-shrink-0">
